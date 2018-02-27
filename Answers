@@ -1,0 +1,5 @@
+1. select name from Friend, Highschooler where ID2 = ID and ID1 in(select ID from Highschooler where name="Gabriel");
+2. select name from Highschooler where ID not in(select ID1 from Likes union select ID2 from Likes);
+3. select name, grade from (select name, grade,count(name) as c from Highschooler, Likes where Highschooler.ID=Likes.ID2 group by name) as admire where c>1;
+4. select name1.name, name1.grade, name2.name, name2.grade from Highschooler as name1, Highschooler as name2, Likes where ID1=name1.ID and name2.ID=Likes.ID2 and name1.grade>=name2.grade+2; 
+8. select avg(friendly) from (select count(ID1) as friendly from Friend group by ID1) as numFriend;
